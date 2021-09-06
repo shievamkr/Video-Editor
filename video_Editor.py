@@ -4,10 +4,10 @@ from PIL import Image
 import os
 
 # assign directory
-videoDirectory = 'C:\Users\shiva\OneDrive\Desktop\Video'
+videoDirectory = r'C:\Users\shiva\OneDrive\Desktop\git repo\Video-Editor'
 
 for filename in os.listdir(videoDirectory):
-    if(filename.find('m4v')>1):
+    if(filename.find('mp4')>1):
         partitioned_string = filename.partition('.')
         name = partitioned_string[0]
         clip = VideoFileClip(filename)
