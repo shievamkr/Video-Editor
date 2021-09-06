@@ -1,3 +1,4 @@
 # Video-Editor
-Here we are developing a video editor software 
+Here you can get puthon codes for video editing
+
 
