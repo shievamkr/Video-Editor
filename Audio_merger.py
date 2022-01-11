@@ -1,5 +1,5 @@
-# Import everything needed to edit video clips
-from moviepy.editor import *
+import moviepy.editor as mp
+from PIL import Image
 from pathlib import Path
 import os
 
@@ -10,19 +10,14 @@ for filename in os.listdir(videoDirectory):
     if(filename.find('mp4')>1):
         partitioned_string = filename.partition('.')
         name = partitioned_string[0]
-        output = name +".mp4"
-        
-        clip = VideoFileClip(filename)
-
-
-        # getting only first 5 seconds
-        clip = clip.subclip(0, 25)
-
-        # loading audio file
-        audioclip = AudioFileClip("theme.mp3").subclip(0,25)
-
-        # adding audio to the video clip
-        videoclip = clip.set_audio(audioclip)
-        videoclip.write_videofile(output,codec ="vp9")
-        # showing video clip
-        videoclip.ipython_display()
+        my_clip = mp.VideoFileClip(filename).subclip(0, 25)
+        audio_background = mp.AudioFileClip('theme.mp3').subclip(0,25)
+        # final_audio = mp.CompositeAudioClip([my_clip.audio, audio_background])
+        final_clip = my_clip.set_audio(audio_background)
+        # audio = mp.AudioFileClip("theme.mp3").subclip(0,25)
+        # video1 = mp.VideoFileClip(filename)
+        # video = video1.subclip(0, 25)
+        # final = video.set_audio(audio)
+        final_clip.write_videofile(name+".mp4",codec= 'libx264')
+        final_clip.ipython_display()
+        # print(name)
