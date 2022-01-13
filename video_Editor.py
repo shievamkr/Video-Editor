@@ -4,9 +4,9 @@ from PIL import Image
 import os
 
 # assign directory
-videoDirectory = r'C:\Users\shiva\OneDrive\Desktop\git repo\Video-Editor'
+# videoDirectory = r'D:\MASHH\product video-20220107T151941Z-001\product video'
 
-for filename in os.listdir(videoDirectory):
+for filename in os.listdir(os.getcwd()):
     if(filename.find('mp4')>1):
         partitioned_string = filename.partition('.')
         name = partitioned_string[0]
